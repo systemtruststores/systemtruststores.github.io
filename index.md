@@ -1,6 +1,4 @@
-# native-certs
-
-The native-certs project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
+The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
 ## Projects
 
@@ -8,7 +6,7 @@ The following languages and tools have **built-in support** for TLS certificates
 
 - **macOS CLI tools:** All versions
 - **Swift**: All versions
-- **Deno:** Since v1.13.0 (https://github.com/denoland/deno/pull/11491)
+- **Deno:** Since v1.13.0 ([denoland/deno#11491](https://github.com/denoland/deno/pull/11491))
 
 The following languages or tools require you to install a **library** that does TLS certificate handling via the OS trust store:
 
