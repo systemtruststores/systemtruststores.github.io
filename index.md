@@ -1,7 +1,5 @@
 The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
-## Projects
-
 The following languages and tools have **built-in support** for TLS certificates in the OS trust store:
 
 - **macOS CLI tools:** All versions
@@ -14,7 +12,7 @@ The following languages or tools require you to install a **library** that does 
 - **Python:** [truststore](https://github.com/sethmlarson/truststore) (WIP)
 - **Rust:** [rustls-native-certs](https://github.com/rustls/rustls-native-certs)
 
-If you're interested in the problem that this solves, or how solutions are implemented, read on.
+If you're interested in the problem that this solves, or how the solutions are implemented, read on.
 
 ## The Problem
 
