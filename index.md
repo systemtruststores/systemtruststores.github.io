@@ -10,7 +10,7 @@ The following languages and tools have **built-in support** for TLS certificates
 
 The following languages or tools require you to install a **library** that does TLS certificate handling via the OS trust store:
 
-- **Node:** node-native-certs (WIP)
+- **Node:** [node-native-certs](https://github.com/bnoordhuis/node-native-certs) (WIP)
 - **Python:** [truststore](https://github.com/sethmlarson/truststore) (WIP)
 - **Rust:** [rustls-native-certs](https://github.com/rustls/rustls-native-certs)
 
