@@ -1,16 +1,20 @@
 The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
-The following languages and tools have **built-in support** for TLS certificates in the OS trust store:
+The following languages have **built-in support** for TLS certificates in the OS trust store:
 
-- **macOS CLI tools:** All versions
-- **Swift**: All versions
-- **Deno:** Since v1.13.0 ([denoland/deno#11491](https://github.com/denoland/deno/pull/11491))
+| Language | Since   | Pull Request                                                       |
+|----------|---------|--------------------------------------------------------------------|
+| Swift    | v1      |                                                                    |
+| Deno     | v1.13.0 | [denoland/deno#11491](https://github.com/denoland/deno/pull/11491) |
 
-The following languages or tools require you to install a **library** that does TLS certificate handling via the OS trust store:
+The following languages require you to install a **library** that does TLS certificate handling via the OS trust store:
 
-- **Node:** [node-native-certs](https://github.com/bnoordhuis/node-native-certs) (WIP)
-- **Python:** [truststore](https://github.com/sethmlarson/truststore) (WIP)
-- **Rust:** [rustls-native-certs](https://github.com/rustls/rustls-native-certs)
+| Language | Library                                                              | Status |
+|----------|----------------------------------------------------------------------|--------|
+| Node     | [node-native-certs](https://github.com/bnoordhuis/node-native-certs) | WIP    |
+| Python   | [truststore](https://github.com/sethmlarson/truststore)              | WIP    |
+| Rust     | [rustls-native-certs](https://github.com/rustls/rustls-native-certs) | Stable |
+
 
 If you're interested in the problem that this solves, or how the solutions are implemented, read on.
 
