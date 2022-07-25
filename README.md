@@ -1,13 +1,14 @@
 The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
-The following languages have **built-in support** for TLS certificates in the OS trust store:
+The following languages have **built-in support** for doing TLS certificate verification via the OS trust store:
 
-| Language | Since   | Pull Request                                                       |
-|----------|---------|--------------------------------------------------------------------|
-| Swift    | v1      |                                                                    |
-| Deno     | v1.13.0 | [denoland/deno#11491](https://github.com/denoland/deno/pull/11491) |
+| Language | Since   | Notes                                                                       |
+|----------|---------|-----------------------------------------------------------------------------|
+| Deno     | v1.13.0 | Added in [denoland/deno#11491](https://github.com/denoland/deno/pull/11491) |
+| Go       | ???     | Added long ago                                                              |
+| Swift    | v1      |                                                                             |
 
-The following languages require you to install a **library** that does TLS certificate handling via the OS trust store:
+The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
 | Language | Library                                                              | Status |
 |----------|----------------------------------------------------------------------|--------|
