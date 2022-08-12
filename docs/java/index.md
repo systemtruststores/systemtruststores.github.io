@@ -1,14 +1,14 @@
-# JVM
+# Java
 
-This page covers the JVM's integration with native certificate stores.
+This page covers Java's integration with native certificate stores.
 
-It applies to Java, and every other language that can run on the JVM (e.g. Scala, Groovy, Clojure, Ruby).
+It also applies to any other language that can run on the JVM (e.g. Scala, Groovy, Clojure, Ruby).
 
 ---
 
-The JVM has `keystore`s and `truststore`s. Of the two, we are interested in `truststore`s.
+Java has `keystore`s and `truststore`s. Of the two, we are interested in `truststore`s.
 
-The JVM's default `truststore` strategy queries a limited set of certificates that ship with the JVM. You must specify an alternate truststore strategy to make the JVM use your OS native trust store. This is done by running Java with the `-Djavax.net.ssl.trustStoreType` and `-Djavax.net.ssl.trustStore` properties, set to the appropriate values.
+The default `truststore` strategy queries a limited set of certificates that ship with the JVM. You must specify an alternate strategy to make Java use your OS native trust store. This is done by running Java with the `-Djavax.net.ssl.trustStoreType` and `-Djavax.net.ssl.trustStore` properties, set to the appropriate values.
 
 These Java properties can be made persistent by setting an environment variable in your shell profile:
 
@@ -20,18 +20,18 @@ They can alternatively be made persistent by setting them in a Maven profile, wh
 
 ## Windows
 
-The JVM truststore strategies which access the Windows Certificate Store are:
+The Java truststore strategies which access the Windows Certificate Store are:
 
 ### `WINDOWS-ROOT`
 
-Run the JVM with these properties:
+Run Java with these properties:
 
 - `-Djavax.net.ssl.trustStoreType=WINDOWS-ROOT`
 - `-Djavax.net.ssl.trustStore=NUL`
 
 ### `WINDOWS-MY`
 
-Run the JVM with these properties:
+Run Java with these properties:
 
 - `-Djavax.net.ssl.trustStoreType=WINDOWS-MY`
 - `-Djavax.net.ssl.trustStore=NUL`
