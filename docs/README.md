@@ -4,7 +4,7 @@ The following languages have **built-in support** for doing TLS certificate veri
 
 | Language | Windows support? | macOS support? | Since    | How to use                             |
 |----------|------------------|----------------|----------|----------------------------------------|
-| Deno     | ✅               | ✅             | v1.13.0  | [Guide](docs/javascript/deno/index.md) |
+| Deno     | ✅               | ✅             | v1.13.0  | [Guide](javascript/deno/index.md) |
 | Go       | ✅               | ✅             | ?        | |
 | Java     | Partial          | Partial        | Before Java 8 | `KeychainStore`, `Windows-MY`, `Windows-ROOT` only look in current user truststores, not the system truststore. This may change in Java 19. |
 | Swift    | ?                | ✅             | v1       | Has always had support via `URLSession` and `Security.framework` |
