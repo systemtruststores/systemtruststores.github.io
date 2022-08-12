@@ -2,11 +2,12 @@ The **native-certs** project tracks initiatives to make major programming langua
 
 The following languages have **built-in support** for doing TLS certificate verification via the OS trust store:
 
-| Language | Since   | Notes                                                                       |
-|----------|---------|-----------------------------------------------------------------------------|
-| Deno     | v1.13.0 | Added in [denoland/deno#11491](https://github.com/denoland/deno/pull/11491) |
-| Go       | ???     | Added long ago                                                              |
-| Swift    | v1      |                                                                             |
+| Language | Windows support?   | macOS support?     | Since    | Notes                                                                       |
+|----------|--------------------|--------------------|----------|-----------------------------------------------------------------------------|
+| Deno     | :white_check_mark: | :white_check_mark: | v1.13.0  | Added in [denoland/deno#11491](https://github.com/denoland/deno/pull/11491) |
+| Go       | :white_check_mark: | :white_check_mark: |?       | |
+| Java     | Partial            | Partial            | Before Java 8 | `KeychainStore`, `Windows-MY`, `Windows-ROOT` only look in current user truststores, not the system truststore. This may change in Java 19. |
+| Swift    | ?                  | :white_check_mark: | v1       | Has always had support via `URLSession` and `Security.framework`            |
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
