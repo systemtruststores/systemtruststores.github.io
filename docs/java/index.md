@@ -38,9 +38,9 @@ Run Java with these properties:
 
 ### Update
 
-The existing truststore strategies only access the **current user's** certificate store - not the **local computer** certificate store (where most of your TLS root certificates are). Therefore, there have been some updates...
+The existing truststore strategies only access the **current user's** certificate store - not the **local computer** certificate store (where most TLS root certificates live). Therefore, there have been some updates...
 
-In JDK 19 Early Access Build 23 (https://jdk.java.net/19/release-notes#JDK-6782021) Windows KeyStore support in the SunMSCAPI provider was expanded to include access to the local machine location. This was in response to https://bugs.openjdk.org/browse/JDK-6782021.
+In JDK 19 Early Access Build 23 (<https://jdk.java.net/19/release-notes#JDK-6782021>) Windows KeyStore support in the SunMSCAPI provider was expanded to include access to the local machine location. This was in response to <https://bugs.openjdk.org/browse/JDK-6782021>.
 
 The new keystore types are:
 
