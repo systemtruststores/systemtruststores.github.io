@@ -1,6 +1,6 @@
 # Go
 
-[Go](https://golang.org) is "a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 and is built in Rust".
+[Go](https://golang.org) is "an open source programming language that makes it easy to build simple, reliable, and efficient software".
 
 Go supports native TLS certificate verification on:
 
