@@ -1,13 +1,19 @@
 The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
+## Built-In
+
 The following languages have **built-in support** for doing TLS certificate verification via the OS trust store:
 
-| Language | Windows support? | macOS support? | Since         | How to use                             |
-|----------|------------------|----------------|---------------|----------------------------------------|
-| Deno     | ✅               | ✅             | v1.13.0       | [Guide](javascript/deno/index.md)      |
-| Go       | ✅               | ✅             | ?             | |
-| Java     | Partial          | Partial        | Before Java 8 | [Guide](java/index.md)                 |
-| Swift    | ?                | ✅             | v1            | Has always had support via `URLSession` and `Security.framework` |
+| Language | Windows support? | macOS support? | Default behavior? | Since         | How to use                             |
+|----------|------------------|----------------|-------------------|---------------|----------------------------------------|
+| Deno     | Yes              | Yes            | No                | v1.13.0       | [Guide](javascript/deno/index.md)      |
+| Go       | Yes              | Yes            | Yes               | v1.3          | [Guide](go/index.md)                   |
+| Java     | Partial          | Partial        | No                | Before Java 8 | [Guide](java/index.md)                 |
+| Swift    | ?                | Yes            | Yes               | v1            | Has always had support via `URLSession` and `Security.framework` |
+
+(When native TLS certificate verification is not the default behavior, you must take extra actions to enable it. See the guides for details.)
+
+## Libraries
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
