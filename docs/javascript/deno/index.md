@@ -4,9 +4,8 @@
 
 Deno supports native TLS certificate verification on:
 
-- [x] Windows
-- [x] macOS
-- [x] Linux
+- Windows
+- macOS
 
 You activate this by setting the `DENO_TLS_CA_STORE` environment variable to `system`:
 
