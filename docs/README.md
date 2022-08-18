@@ -1,7 +1,5 @@
 The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
-## Built-In
-
 The following languages have **built-in support** for doing TLS certificate verification via the OS trust store:
 
 | Language | Windows support? | macOS support? | Default behavior? | Since         | How to use                         |
@@ -11,12 +9,6 @@ The following languages have **built-in support** for doing TLS certificate veri
 | Java     | Partial          | Partial        | No                | Before Java 8 | [Guide](java/index.md)             |
 | Swift    | ?                | Yes            | Yes               | v1            | [Guide](swift/index.md)            |
 
-(When native TLS certificate verification is not the default behavior, you must take extra actions to enable it. See the guides for details.)
-
-You can help to improve this list by opening a language support ticket at [GitHub Issues](https://github.com/native-certs/native-certs.github.io/issues).
-
-## Libraries
-
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
 | Language | Library                                                              | Status |
@@ -25,6 +17,7 @@ The following languages require you to install a **library** that does TLS certi
 | Python   | [truststore](https://github.com/sethmlarson/truststore)              | WIP    |
 | Rust     | [rustls-native-certs](https://github.com/rustls/rustls-native-certs) | Stable |
 
+You can help to improve these lists by opening a language support ticket at [GitHub Issues](https://github.com/native-certs/native-certs.github.io/issues).
 
 If you're interested in the problem that this solves, or how the solutions are implemented, read on.
 
