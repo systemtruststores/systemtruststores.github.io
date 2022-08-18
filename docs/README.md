@@ -13,6 +13,8 @@ The following languages have **built-in support** for doing TLS certificate veri
 
 (When native TLS certificate verification is not the default behavior, you must take extra actions to enable it. See the guides for details.)
 
+You can help to improve this list by opening a language support ticket at [GitHub Issues](https://github.com/native-certs/native-certs.github.io/issues).
+
 ## Libraries
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
