@@ -1,13 +1,14 @@
 The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
-The following languages have **built-in support** for doing TLS certificate verification via the OS trust store:
+The following languages (or their runtimes) have **built-in support** for doing TLS certificate verification via the OS trust store:
 
-| Language | Windows support? | macOS support? | Default behavior? | Since         | How to use                         |
-|----------|------------------|----------------|-------------------|---------------|------------------------------------|
-| Deno     | Yes              | Yes            | No                | v1.13.0       | [Guide](javascript/deno/index.md)  |
-| Go       | Yes              | Yes            | Yes               | v1.3          | [Guide](go/index.md)               |
-| Java     | Partial          | Partial        | No                | Before Java 8 | [Guide](java/index.md)             |
-| Swift    | ?                | Yes            | Yes               | v1            | [Guide](swift/index.md)            |
+| Language | Windows support? | macOS support? | Default behavior? | Since          | How to use                         |
+|----------|------------------|----------------|-------------------|--------------- |------------------------------------|
+| Deno     | Yes              | Yes            | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
+| Go       | Yes              | Yes            | Yes               | v1.3           | [Guide](go/index.md)               |
+| Java     | Partial          | Partial        | No                | Before Java 8  | [Guide](java/index.md)             |
+| .NET     | Yes              | Yes            | Yes               | v2.0.0 (macOS) | [Guide](dotnet/index.md)           |
+| Swift    | ?                | Yes            | Yes               | v1             | [Guide](swift/index.md)            |
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
