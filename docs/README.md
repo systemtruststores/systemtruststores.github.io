@@ -2,13 +2,13 @@ The **native-certs** project tracks initiatives to make major programming langua
 
 The following languages (or their runtimes) have **built-in support** for doing TLS certificate verification via the OS trust store:
 
-| Language | Windows support? | macOS support? | Default behavior? | Since          | How to use                         |
-|----------|------------------|----------------|-------------------|--------------- |------------------------------------|
-| Deno     | Yes              | Yes            | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
-| Go       | Yes              | Yes            | Yes               | v1.3           | [Guide](go/index.md)               |
-| Java     | Partial          | Partial        | No                | Before Java 8  | [Guide](java/index.md)             |
-| .NET     | Yes              | Yes            | Yes               | v2.0.0 (macOS) | [Guide](dotnet/index.md)           |
-| Swift    | ?                | Yes            | Yes               | v1             | [Guide](swift/index.md)            |
+| Language | Windows support? | macOS support? | Android support? | Default behavior? | Since          | How to use                         |
+|----------|------------------|----------------|------------------|-------------------|--------------- |------------------------------------|
+| Deno     | Yes              | Yes            | ?                | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
+| Go       | Yes              | Yes            | ?                | Yes               | v1.3           | [Guide](go/index.md)               |
+| Java     | Partial          | Partial        | Yes              | ?                 | Before Java 8  | [Guide](java/index.md)             |
+| .NET     | Yes              | Yes            | ?                | Yes               | v2.0.0 (macOS) | [Guide](dotnet/index.md)           |
+| Swift    | ?                | Yes            | ?                | Yes               | v1             | [Guide](swift/index.md)            |
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
@@ -48,7 +48,7 @@ It causes a number of further difficulties:
 
 ## The Workarounds
 
-There are a number of hacks / workarounds for the problem today. As we shall see, none of them are really a solution.
+There are a number of hacks or workarounds for the problem today. As we shall see, none of them are really a solution.
 
 ### Disable TLS verification
 
@@ -65,7 +65,7 @@ NODE_TLS_REJECT_UNAUTHORIZED=0
 node ./example.js
 ```
 
-This makes the TLS error go away, but is **a terrible idea** for many obvious reasons.
+This makes the TLS error go away, but is **a terrible idea** for many well-documented reasons.
 
 ### Set tool-specific certificate options
 
@@ -85,7 +85,7 @@ node ./example.js
 This has the following problems:
 
 - It requires duplication of the certificate(s) in question outside of the OS trust store. The user must then keep these duplicated certificates up to date when they are rotated.
-- In an average development workstation, 10s to 100s of tools may require this fix. This requires adding (and maintaining) **a mile-long list of workarounds** to your shell profile!
+- In an average development workstation, dozens of tools may require this fix. This requires adding (and maintaining) a bunch of workarounds to your shell profile.
 
 ### Bundle the custom TLS certificate(s) in a library
 
@@ -113,7 +113,7 @@ On macOS the trust store is the Keychain.
 
 You can integrate with the Keychain in the following ways:
 
-- `Security.framework`: this is the low-level approach where you fetch all TLS certificates from the Keychain as an array of ASCII-armored strings, and your app code decides what to do with them. This has the advantage that it will work with existing HTTPS libraries.
+- `Security.framework`: this is the low-level approach where you fetch TLS certificates from the Keychain, and your app code decides what to do with them.
 - `URLSession`: this is the high-level approach where your language's HTTPS client becomes a wrapper for Apple's `URLSession` HTTPS client. This means that that you get any TLS certificate handling optimizations in `URLSession` (e.g. caching) 'for free'.
 
 ### on Windows
