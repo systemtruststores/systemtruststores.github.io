@@ -8,7 +8,7 @@ The following languages (or their runtimes) have **built-in support** for doing 
 | Go       | Yes              | Yes            | ?                | Yes               | v1.3           | [Guide](go/index.md)               |
 | Java     | Partial          | Partial        | Yes              | ?                 | Before Java 8  | [Guide](java/index.md)             |
 | .NET     | Yes              | Yes            | ?                | Yes               | v2.0.0 (macOS) | [Guide](dotnet/index.md)           |
-| Swift    | ?                | Yes            | ?                | Yes               | v1             | [Guide](swift/index.md)            |
+| Swift    | Yes              | Yes            | ?                | Yes               | v1             | [Guide](swift/index.md)            |
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
