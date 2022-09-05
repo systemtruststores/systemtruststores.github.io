@@ -1,14 +1,34 @@
 The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system trust stores.
 
-The following languages (or their runtimes) have **built-in support** for doing TLS certificate verification via the OS trust store:
+The following languages (or their runtimes) have **built-in support** for doing TLS certificate verification via the native trust store on the following operating systems:
 
-| Language | Windows support? | macOS support? | Android support? | Default behavior? | Since          | How to use                         |
-|----------|------------------|----------------|------------------|-------------------|--------------- |------------------------------------|
-| Deno     | Yes              | Yes            | ?                | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
-| Go       | Yes              | Yes            | ?                | Yes               | v1.3           | [Guide](go/index.md)               |
-| Java     | Partial          | Partial        | Yes              | ?                 | Before Java 8  | [Guide](java/index.md)             |
-| .NET     | Yes              | Yes            | ?                | Yes               | v2.0.0 (macOS) | [Guide](dotnet/index.md)           |
-| Swift    | Yes              | Yes            | ?                | Yes               | v1             | [Guide](swift/index.md)            |
+### macOS
+
+| Language | Native truststore support? | Default behavior? | Since          | How to use                         |
+|----------|----------------------------|-------------------|----------------|------------------------------------|
+| Deno     | Yes                        | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
+| Go       | Yes                        | Yes               | v1.3           | [Guide](go/index.md)               |
+| Java     | Partial                    | No                | Before Java 8  | [Guide](java/index.md)             |
+| .NET     | Yes                        | Yes               | v2.0.0         | [Guide](dotnet/index.md)           |
+| Swift    | Yes                        | Yes               | v1             | [Guide](swift/index.md)            |
+
+### Windows
+
+| Language | Native truststore support? | Default behavior? | Since          | How to use                         |
+|----------|----------------------------|-------------------|----------------|------------------------------------|
+| Deno     | Yes                        | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
+| Go       | Yes                        | Yes               | v1.3           | [Guide](go/index.md)               |
+| Java     | Partial                    | No                | Before Java 8  | [Guide](java/index.md)             |
+| .NET     | Yes                        | Yes               | v1             | [Guide](dotnet/index.md)           |
+| Swift    | Yes                        | Yes               | v1             | [Guide](swift/index.md)            |
+
+### Android
+
+| Language | Native truststore support? | Default behavior? | Since      | How to use             |
+|----------|----------------------------|-------------------|------------|------------------------|
+| Java     | Yes                        | Yes               | Android v? | [Guide](java/index.md) |
+
+### Libraries
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
@@ -18,11 +38,13 @@ The following languages require you to install a **library** that does TLS certi
 | Python   | [truststore](https://github.com/sethmlarson/truststore)              | WIP    |
 | Rust     | [rustls-native-certs](https://github.com/rustls/rustls-native-certs) | Stable |
 
-You can help to improve these lists by opening a language support ticket at [GitHub Issues](https://github.com/native-certs/native-certs.github.io/issues).
+Don't see your favourite language in these lists? You can help by opening a language support ticket at [GitHub Issues](https://github.com/native-certs/native-certs.github.io/issues).
+
+## Rationale
 
 If you're interested in the problem that this solves, or how the solutions are implemented, read on.
 
-## The Problem
+### The Problem
 
 Have you ever seen an error like this while using your favourite language or CLI tool...
 
@@ -46,11 +68,11 @@ It causes a number of further difficulties:
 - It breaks the vast majority of developer tools (unless tool-specific workarounds are applied). This significantly impedes development work.
 - It trains users and developers to click through TLS certificate warnings without thinking. This is a Bad Thing because one day they will encounter a malicious TLS certificate, and they will simply accept it.
 
-## The Workarounds
+### The Workarounds
 
 There are a number of hacks or workarounds for the problem today. As we shall see, none of them are really a solution.
 
-### Disable TLS verification
+#### Disable TLS verification
 
 The first hack that people usually resort to is turning off all TLS verification in the given tool or programming language.
 
@@ -67,7 +89,7 @@ node ./example.js
 
 This makes the TLS error go away, but is **a terrible idea** for many well-documented reasons.
 
-### Set tool-specific certificate options
+#### Set tool-specific certificate options
 
 The second way is to use the tool- or language-specific CLI options to add the extra certificate(s) to the search path.
 
@@ -87,13 +109,13 @@ This has the following problems:
 - It requires duplication of the certificate(s) in question outside of the OS trust store. The user must then keep these duplicated certificates up to date when they are rotated.
 - In an average development workstation, dozens of tools may require this fix. This requires adding (and maintaining) a bunch of workarounds to your shell profile.
 
-### Bundle the custom TLS certificate(s) in a library
+#### Bundle the custom TLS certificate(s) in a library
 
 A less common workaround is to use a library as a bundle of the custom TLS certificate(s). This library is then shipped to developers through a repository like PyPi or NPM. (This is the essence of what Certifi does.)
 
 However, as Seth Larson articulated during the PyCon 2022 [The future of trust stores in Python](https://youtu.be/1IiL31tUEVk?t=698) ([slides](https://speakerdeck.com/sethmlarson/the-future-of-trust-stores-in-python)) talk, package repositories don't make great TLS certificate distribution systems. There is a better way.
 
-## The Solution
+### The Solution
 
 You could apply a bunch of workarounds, but why should you have to? Native applications on your system handle TLS certificates without fuss, so your other tools should be able to do this too.
 
@@ -107,26 +129,26 @@ This means:
 - No need to duplicate certificates outside of the trust store
 - The system manages custom certificates (e.g. corporate TLS inspection certificates)
 
-### on macOS
+#### on macOS
 
 On macOS the trust store is the Keychain.
 
-You can integrate with the Keychain in the following ways:
+Language runtimes can integrate with the Keychain in the following ways:
 
 - `Security.framework`: this is the low-level approach where you fetch TLS certificates from the Keychain, and your app code decides what to do with them.
 - `URLSession`: this is the high-level approach where your language's HTTPS client becomes a wrapper for Apple's `URLSession` HTTPS client. This means that that you get any TLS certificate handling optimizations in `URLSession` (e.g. caching) 'for free'.
 
-### on Windows
+#### on Windows
 
 On Windows the trust store is the Windows Certificate Store.
 
-You can integrate with the Windows Certificate Store in the following ways:
+Language runtimes can integrate with the Windows Certificate Store in the following ways:
 
 - `schannel`
 - `CryptoAPI`
 
-### on Linux
+#### on Linux
 
-Linux distributions don't have a single keychain-like trust store API that you can use. (The closest offerings are perhaps GNOME Keyring or KDE Wallet, but they are tied to their respective ecosystems.) Instead certificates are stored directly on the filesystem, following the Filesystem Hierarchy Standard.
+Linux distributions don't have a truststore API like the macOS Keychain. (The closest offerings are perhaps GNOME Keyring or KDE Wallet, but these are *keystores* for holding passwords, rather than *truststores* for holding root certificates.) Instead, certificates are stored directly on the filesystem, following the Filesystem Hierarchy Standard.
 
 The typical approach that native trust store integration wrappers take is to let OpenSSL look up the certificates on Linux (or at least, use OpenSSL conventions to determine the certificate search path), but step in to customize TLS certificate handling on other systems.
