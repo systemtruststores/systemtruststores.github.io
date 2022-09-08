@@ -8,17 +8,11 @@ certificate verify failed:
 unable to get local issuer certificate
 ```
 
-Or used unsafe tactics like "`curl -k` and pray" to get round it:
-
-```shell
-curl -k https://example.com     # don't do this
-```
-
-Then you need what system truststores have to offer!
+Then system truststores can help you!
 
 If you're interested in the problem that they solve, or how language support can be implemented for them, read the in-depth [Rationale](rationale/index.md).
 
-## Support
+## Built-in Support
 
 The following languages (or their runtimes) have **built-in support** for doing TLS certificate verification via the system truststore on the following platforms:
 
