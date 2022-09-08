@@ -4,39 +4,39 @@ The following languages (or their runtimes) have **built-in support** for doing 
 
 ### macOS
 
-| Language | Native truststore support? | Default behavior? | Since          | How to use                         |
-|----------|----------------------------|-------------------|----------------|------------------------------------|
-| Deno     | Yes                        | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
-| Go       | Yes                        | Yes               | v1.3           | [Guide](go/index.md)               |
-| Java     | Partial                    | No                | Before Java 8  | [Guide](java/index.md)             |
-| .NET     | Yes                        | Yes               | v2.0.0         | [Guide](dotnet/index.md)           |
-| Swift    | Yes                        | Yes               | v1             | [Guide](swift/index.md)            |
+| Language | Native truststore support? | Default behavior? | Since          | How to use                                   |
+|----------|----------------------------|-------------------|----------------|----------------------------------------------|
+| Deno     | Yes                        | No                | v1.13.0        | [Guide](languages/javascript/deno/index.md)  |
+| Go       | Yes                        | Yes               | v1.3           | [Guide](languages/go/index.md)               |
+| Java     | Partial                    | No                | Before Java 8  | [Guide](languages/java/index.md)             |
+| .NET     | Yes                        | Yes               | v2.0.0         | [Guide](languages/dotnet/index.md)           |
+| Swift    | Yes                        | Yes               | v1             | [Guide](languages/swift/index.md)            |
 
 ### Windows
 
-| Language | Native truststore support? | Default behavior? | Since          | How to use                         |
-|----------|----------------------------|-------------------|----------------|------------------------------------|
-| Deno     | Yes                        | No                | v1.13.0        | [Guide](javascript/deno/index.md)  |
-| Go       | Yes                        | Yes               | v1.3           | [Guide](go/index.md)               |
-| Java     | Partial                    | No                | Before Java 8  | [Guide](java/index.md)             |
-| .NET     | Yes                        | Yes               | v1             | [Guide](dotnet/index.md)           |
-| Swift    | Yes                        | Yes               | v1             | [Guide](swift/index.md)            |
+| Language | Native truststore support? | Default behavior? | Since          | How to use                                   |
+|----------|----------------------------|-------------------|----------------|----------------------------------------------|
+| Deno     | Yes                        | No                | v1.13.0        | [Guide](languages/javascript/deno/index.md)  |
+| Go       | Yes                        | Yes               | v1.3           | [Guide](languages/go/index.md)               |
+| Java     | Partial                    | No                | Before Java 8  | [Guide](languages/java/index.md)             |
+| .NET     | Yes                        | Yes               | v1             | [Guide](languages/dotnet/index.md)           |
+| Swift    | Yes                        | Yes               | v1             | [Guide](languages/swift/index.md)            |
 
 ### Android
 
-| Language | Native truststore support? | Default behavior? | Since      | How to use             |
-|----------|----------------------------|-------------------|------------|------------------------|
-| Java     | Yes                        | Yes               | Android v? | [Guide](java/index.md) |
+| Language | Native truststore support? | Default behavior? | Since      | How to use                       |
+|----------|----------------------------|-------------------|------------|----------------------------------|
+| Java     | Yes                        | Yes               | Android v? | [Guide](languages/java/index.md) |
 
 ### Libraries
 
 The following languages require you to install a **library** that does TLS certificate verification via the OS trust store:
 
-| Language | Library                                                              | Status |
-|----------|----------------------------------------------------------------------|--------|
-| Node     | [node-native-certs](https://github.com/bnoordhuis/node-native-certs) | WIP    |
-| Python   | [truststore](https://github.com/sethmlarson/truststore)              | WIP    |
-| Rust     | [rustls-native-certs](https://github.com/rustls/rustls-native-certs) | Stable |
+| Language | Library                                                              | Status           |
+|----------|----------------------------------------------------------------------|------------------|
+| Node     | [node-native-certs](https://github.com/bnoordhuis/node-native-certs) | Work In Progress |
+| Python   | [truststore](https://github.com/sethmlarson/truststore)              | Work In Progress |
+| Rust     | [rustls-native-certs](https://github.com/rustls/rustls-native-certs) | Stable           |
 
 Don't see your favourite language in these lists? You can help by opening a language support ticket at [GitHub Issues](https://github.com/native-certs/native-certs.github.io/issues).
 
@@ -146,6 +146,15 @@ Language runtimes can integrate with the Windows Certificate Store in the follow
 
 - `schannel`
 - `CryptoAPI`
+
+#### on Android
+
+On Android the trust store is the System Trust Store.
+
+Standard Android apps (which run on Android Runtime, ART) can integrate with the System Trust Store in the following ways:
+
+- Java cryptography or TLS APIs (`KeyStore`, `SSLContext`, `TrustManager` and so on)
+- Java HTTPS clients (e.g. `HttpClient`)
 
 #### on Linux
 

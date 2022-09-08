@@ -22,19 +22,19 @@ They can alternatively be made persistent by setting them in a Maven profile, wh
 
 The Java truststore strategies which access the Windows Certificate Store are:
 
-### `WINDOWS-ROOT`
+### WINDOWS-ROOT
 
 Run Java with these properties:
 
-- `-Djavax.net.ssl.trustStoreType=WINDOWS-ROOT`
-- `-Djavax.net.ssl.trustStore=NUL`
+- `javax.net.ssl.trustStoreType=WINDOWS-ROOT`
+- `javax.net.ssl.trustStore=NUL`
 
-### `WINDOWS-MY`
+### WINDOWS-MY
 
 Run Java with these properties:
 
-- `-Djavax.net.ssl.trustStoreType=WINDOWS-MY`
-- `-Djavax.net.ssl.trustStore=NUL`
+- `javax.net.ssl.trustStoreType=WINDOWS-MY`
+- `javax.net.ssl.trustStore=NUL`
 
 ### Update
 
@@ -52,8 +52,41 @@ The following keystore types were also added, allowing developers to make it cle
 - `Windows-MY-CURRENTUSER` (same as `Windows-MY`)
 - `Windows-ROOT-CURRENTUSER` (same as `Windows-ROOT`)
 
-Note: this information might change before the final release.
+Note: this information might change before the final release of Java 19.
 
 ## macOS
 
 TODO add instructions
+
+## Android
+
+Standard Android apps are written in JVM languages (like Java) and run on Android Runtime (ART).
+
+By default, they integrate with the Android System Trust Store. You do not need to do anything extra to enable this.
+
+However, simply putting a new certificate in the System Trust Store does not necessarily mean that apps will trust it.
+
+There are different certificate sources within the System Trust Store (System certificates and User certificates), and Android apps treat them differently:
+
+- System certificates: **trusted** by default
+- User certificates: **untrusted** by default (since Android API Level 24) - must add `<certificates src="user" />` to trust them
+
+Android apps can enable or disable trust of various certificate types with the Network Security Configuration in their app manifest (`res/xml/network_security_config.xml`):
+
+```xml
+<network-security-config>
+    <base-config>
+        <trust-anchors>
+            <certificates src="system" /><!-- Trust System certificates -->
+            <certificates src="user" /><!-- Trust User certificates -->
+            <certificates src="@raw/my_ca"/><!-- Trust custom certificates shipped in the app bundle -->
+        </trust-anchors>
+    </base-config>
+</network-security-config>
+```
+
+When an app uses certificate pinning, both System and User certificates are untrusted, and only the custom certificates (or fingerprints) specified in the app bundle are trusted.
+
+So the answer to the question "will Android apps trust a given certificate" is "it depends".
+
+Source: <https://developer.android.com/training/articles/security-config>
