@@ -12,9 +12,9 @@ Then system truststores can help you!
 
 If you're interested in the problem that they solve, or how language support can be implemented for them, read the in-depth [Rationale](rationale/index.md).
 
-## Built-in Support
+## Built-in support
 
-The following languages (or their runtimes) have **built-in support** for doing TLS certificate verification via the system truststore on the following platforms:
+The following languages (or their runtimes) have **built-in support** for the system truststore on the following platforms:
 
 ### macOS
 
@@ -54,7 +54,7 @@ Linux distributions don't have a truststore API like the platforms above. See th
 
 ## Libraries
 
-The following languages require you to install a **library** that does TLS certificate verification via the system truststore:
+The following languages require you to install a **library** that connects to the system truststore:
 
 | Language | Library                                                              | Status           |
 |----------|----------------------------------------------------------------------|------------------|
@@ -62,4 +62,6 @@ The following languages require you to install a **library** that does TLS certi
 | Python   | [truststore](https://github.com/sethmlarson/truststore)              | Work In Progress |
 | Rust     | [rustls-native-certs](https://github.com/rustls/rustls-native-certs) | Stable           |
 
-Don't see your favourite language in these lists? You can help by opening a language support ticket at [GitHub Issues](https://github.com/native-certs/native-certs.github.io/issues).
+## Help improve this site
+
+Don't see your favourite language in the lists above? Want to add something to the guides? Open an Issue or a Pull Request on [GitHub](https://github.com/systemtruststores/systemtruststores.github.io/) to improve this site.
