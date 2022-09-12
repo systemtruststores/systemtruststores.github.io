@@ -1,4 +1,4 @@
-The **native-certs** project tracks initiatives to make major programming languages 'just work' with TLS certificates from operating system truststores.
+The **systemtruststores** project tracks initiatives to make major programming languages 'just work' with TLS certificates from your operating system's native truststore.
 
 If you've ever encountered a TLS error like this:
 
