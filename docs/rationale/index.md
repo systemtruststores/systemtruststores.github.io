@@ -77,7 +77,7 @@ However, as Seth Larson articulated during the PyCon 2022 [The future of trust s
 
 You could apply a bunch of workarounds, but why should you have to? Native applications on your system handle TLS certificates without fuss, so your other tools should be able to do this too.
 
-**The real solution is for CLI tools and programming languages to integrate with the native OS trust store.**  (With the option to turn this off for debugging, or compatibility with legacy environments.)
+**The real solution is for CLI tools and programming languages to integrate with the system truststore.**  (With the option to turn this off for debugging, or compatibility with legacy environments.)
 
 This means:
 
@@ -89,7 +89,7 @@ This means:
 
 ### on macOS
 
-On macOS the trust store is the Keychain.
+On macOS the truststore is the Keychain.
 
 Language runtimes can integrate with the Keychain in the following ways:
 
@@ -98,7 +98,7 @@ Language runtimes can integrate with the Keychain in the following ways:
 
 ### on Windows
 
-On Windows the trust store is the Windows Certificate Store.
+On Windows the truststore is the Windows Certificate Store.
 
 Language runtimes can integrate with the Windows Certificate Store in the following ways:
 
@@ -107,7 +107,7 @@ Language runtimes can integrate with the Windows Certificate Store in the follow
 
 ### on Android
 
-On Android the trust store is the System Trust Store.
+On Android the truststore is the System Trust Store.
 
 Standard Android apps (which run on Android Runtime, ART) can integrate with the System Trust Store in the following ways:
 
@@ -118,4 +118,4 @@ Standard Android apps (which run on Android Runtime, ART) can integrate with the
 
 Linux distributions don't have a truststore API like the macOS Keychain. (The closest offerings are perhaps GNOME Keyring or KDE Wallet, but these are *keystores* for holding passwords, rather than *truststores* for holding root certificates.) Instead, certificates are stored directly on the filesystem, following the Filesystem Hierarchy Standard. An application's TLS library (like OpenSSL) then reads the certificates from this location.
 
-The typical approach that native trust store integration wrappers take is to let OpenSSL look up the certificates on Linux (or at least, use OpenSSL conventions to determine the certificate search path), but step in to customize TLS certificate handling on other systems.
+The typical approach that system truststore integration wrappers take is to let OpenSSL look up the certificates on Linux (or at least, use OpenSSL conventions to determine the certificate search path), but step in to customize TLS certificate handling on other systems.
