@@ -14,13 +14,13 @@ In Swift, TLS certificates are accessed in three main ways:
 
 On macOS, Swift uses Apple's implementations of these frameworks. Apple's implementations leverage the Keychain internally.
 
-Therefore, Swift supports native TLS certificate verification on macOS. This the default behaviour; you do not need to do anything extra to use it.
+Therefore, Swift supports the system truststore on macOS. This the default behaviour; you do not need to do anything extra to use it.
 
 ## Windows
 
-On Windows, Swift is built with open source implementations of these frameworks. For example, [swift-corelibs-foundation](https://github.com/apple/swift-corelibs-foundation) reimplements `Foundation`. That library uses Curl as its HTTPS driver, and on Windows, it builds Curl with the Schannel backend.
+On Windows, Swift is built with open source implementations of these frameworks. For example, [swift-corelibs-foundation](https://github.com/apple/swift-corelibs-foundation) reimplements `Foundation`. That library uses Curl as its HTTPS driver, and on Windows, it builds Curl with the Schannel backend (source: [apple/swift-corelibs-foundation#4625](https://github.com/apple/swift-corelibs-foundation/issues/4625#issuecomment-1225735572)).
 
-Therefore, Swift supports native TLS certificate verification on Windows. This the default behaviour; you do not need to do anything extra to use it.
+Therefore, Swift supports the system truststore on Windows. This the default behaviour; you do not need to do anything extra to use it.
 
 ## Footnote
 
