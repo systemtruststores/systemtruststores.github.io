@@ -40,14 +40,6 @@ On Windows the truststore is the Windows Certificate Store.
 | .NET     | Yes                        | Yes               | v1             | [Guide](languages/dotnet/index.md)           |
 | Swift    | Yes                        | Yes               | v1             | [Guide](languages/swift/index.md)            |
 
-### Android
-
-On Android the truststore is the System Trust Store.
-
-| Language | System truststore support? | Default behavior? | Since      | How to use                       |
-|----------|----------------------------|-------------------|------------|----------------------------------|
-| Java     | Yes                        | Yes               | TBC        | [Guide](languages/java/index.md) |
-
 ### Linux
 
 Linux distributions don't have a truststore API like the platforms above. See the [Rationale](rationale/index.md) for more details.
