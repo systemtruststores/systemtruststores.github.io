@@ -1,4 +1,4 @@
-The **systemtruststores** project tracks initiatives to make major programming languages 'just work' with TLS certificates from your operating system's native truststore.
+The **systemtruststores** project tracks efforts to make programming languages work with TLS certificates from your operating system's native truststore.
 
 If you've ever encountered a TLS error like this:
 
@@ -46,7 +46,7 @@ On Android the truststore is the System Trust Store.
 
 | Language | System truststore support? | Default behavior? | Since      | How to use                       |
 |----------|----------------------------|-------------------|------------|----------------------------------|
-| Java     | Yes                        | Yes               | Android v? | [Guide](languages/java/index.md) |
+| Java     | Yes                        | Yes               | TBC        | [Guide](languages/java/index.md) |
 
 ### Linux
 
@@ -64,4 +64,4 @@ The following languages require you to install a **library** that connects to th
 
 ## Help improve this site
 
-Don't see your favourite language in the lists above? Want to add something to the guides? Open an Issue or a Pull Request on [GitHub](https://github.com/systemtruststores/systemtruststores.github.io/) to improve this site.
+Don't see your favourite language in the lists above? Want to change something in the guides? You can help to improve this site by opening an Issue or Pull Request on GitHub: [systemtruststores/systemtruststores.github.io](https://github.com/systemtruststores/systemtruststores.github.io/).
